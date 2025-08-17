@@ -2,56 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Surfing Ceylon Design System - Coastal Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
+    /* Base Colors - Coastal Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 25% 15%;
+
+    /* Ocean Blues */
+    --ocean-deep: 205 100% 25%;
+    --ocean-bright: 205 100% 50%;
+    --ocean-light: 205 100% 85%;
+    
+    /* Sandy & Coral */
+    --sand-warm: 35 25% 90%;
+    --sand-medium: 35 25% 80%;
+    --coral-sunset: 14 100% 70%;
+    --coral-light: 14 80% 85%;
+
+    /* UI Colors */
+    --primary: 205 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 205 100% 45%;
+
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 215 25% 15%;
+
+    --accent: 14 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 35 15% 95%;
+    --muted-foreground: 215 15% 45%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 205 100% 50%;
 
     --radius: 0.5rem;
 
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--ocean-deep)), hsl(var(--ocean-bright)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--coral-sunset)), hsl(var(--ocean-bright)));
+    --gradient-sand: linear-gradient(180deg, hsl(var(--sand-warm)), hsl(var(--sand-medium)));
+    --gradient-hero: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+
+    /* Shadows */
+    --shadow-ocean: 0 10px 30px -10px hsl(var(--ocean-bright) / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(var(--ocean-light) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -101,5 +121,62 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .wave-divider {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wave-divider::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E%3C/svg%3E") repeat-x;
+    background-size: 1200px 60px;
+  }
+
+  .btn-ocean {
+    @apply bg-gradient-to-r from-ocean-bright to-ocean-deep text-white font-semibold px-8 py-4 rounded-full;
+    @apply hover:scale-105 hover:shadow-lg transition-all duration-300;
+    box-shadow: var(--shadow-ocean);
+  }
+
+  .btn-coral {
+    @apply bg-gradient-to-r from-coral-sunset to-accent text-white font-semibold px-8 py-4 rounded-full;
+    @apply hover:scale-105 hover:shadow-lg transition-all duration-300;
+  }
+
+  .card-surf {
+    @apply bg-card rounded-2xl overflow-hidden;
+    @apply hover:shadow-xl hover:-translate-y-2 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-ocean {
+    color: hsl(var(--ocean-bright));
+  }
+
+  .bg-ocean-gradient {
+    background: var(--gradient-ocean);
+  }
+
+  .bg-sunset-gradient {
+    background: var(--gradient-sunset);
+  }
+
+  .bg-sand-section {
+    background: hsl(var(--sand-warm));
   }
 }

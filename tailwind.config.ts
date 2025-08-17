@@ -24,9 +24,22 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				// Ocean colors
+				'ocean-deep': 'hsl(var(--ocean-deep))',
+				'ocean-bright': 'hsl(var(--ocean-bright))',
+				'ocean-light': 'hsl(var(--ocean-light))',
+				
+				// Sandy & Coral colors
+				'sand-warm': 'hsl(var(--sand-warm))',
+				'sand-medium': 'hsl(var(--sand-medium))',
+				'coral-sunset': 'hsl(var(--coral-sunset))',
+				'coral-light': 'hsl(var(--coral-light))',
+				
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
